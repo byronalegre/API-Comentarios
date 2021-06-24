@@ -1,0 +1,22 @@
+<h3 class="my-3">
+    {{accion}} Comentario
+</h3>
+<form [formGroup]="agregarComentario" (ngSubmit)="agregarEditarComentario()">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Ingrese el título" autocomplete="off">
+        <span *ngIf="agregarComentario.get('titulo')?.invalid && agregarComentario.get('titulo')?.touched" class="text-danger">El <strong>titulo</strong> es requerido</span>
+    </div>
+    <div class="mb-3">
+        <label for="creador" class="form-label">Creador</label>
+        <input formControlName="creador" type="text" class="form-control" id="creador" placeholder="Ingrese el creador" autocomplete="off">
+        <span *ngIf="agregarComentario.get('creador')?.invalid && agregarComentario.get('creador')?.touched" class="text-danger">El <strong>creador</strong> es requerido</span>
+    </div>
+    <div class="mb-3">
+        <label for="texto" class="form-label">Texto</label>
+        <textarea formControlName="texto" class="form-control" id="texto" rows="3" placeholder="Ingrese el texto"></textarea>
+        <span *ngIf="agregarComentario.get('texto')?.invalid && agregarComentario.get('texto')?.touched" class="text-danger">El <strong>texto</strong> es requerido</span>
+    </div>
+    <button routerLink='/' type="button" class="btn btn-secondary">Atrás</button>
+    <button type="submit" [disabled]="agregarComentario.invalid" class="btn btn-success float-end">Guardar</button>
+</form>
